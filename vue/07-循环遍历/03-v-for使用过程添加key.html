@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <ul>
+        <!--数组方法splice，往中间查查元素-->
+        <li v-for="item in letters" :key="item">{{item}}</li>
+    </ul>
+    <button @click="btnClick">bc之间添加元素</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:"#app",
+        data:{
+            message:"你好呀",
+            letters:['a','b','c','d']
+        },
+        methods:{
+            btnClick(){
+                this.letters.splice(2,0,"f");
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p>父组件</p>
+    {{message}}
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <p>子组件</p>
+        <ul>
+            <li v-for="item in cmovies">{{item}}</li>
+        </ul>
+        <p>{{cmovies}}</p>
+        <p>{{cmessage}}</p>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    //父传子：props
+    const cpn={
+        template:'#cpn',
+        //1、props:可以传数组
+        // props:['cmovies','cmessage']
+        //2、props：可以传对象,类型限制
+        // props:{
+        //     cmovies:Array,
+        //     cmessage:String
+        // }
+        // 3、props提供一些默认值
+        props:{
+            cmessage:{
+                type:String,
+                default:'aaaaaa',
+                // required:true
+            },
+            cmovies:{
+                type:Array,
+                //类型是对象或者数组时，默认值必须是一个函数
+                default(){
+                    return  ['bbb']
+                }
+            }
+        }
+
+    }
+    const app=new Vue({
+        el:"#app",
+        data:{
+           message:"你好呀",
+            movies:['海王','海贼王','海尔兄弟']
+        },
+        components:{
+           cpn
+
+    }
+        }
+    )
+</script>
+</body>
+</html>

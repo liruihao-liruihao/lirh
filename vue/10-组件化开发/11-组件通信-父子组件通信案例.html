@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    {{message}}
+    {{num1}}
+    <cpn :cnum1="num1" :cnum2="num2" @number1change="number1change"></cpn>
+</div>
+<template id="cpn">
+    <div>
+
+        <h2>{{cnum1}}</h2>
+        <h2>{{dnumber}}</h2>
+        <label for="cnum1">
+            <input type="text" v-model="cnum1" id="cnum1">props:cnum1
+        </label>
+        <label for="dnum1">
+            <!--<input type="text" v-model="dnumber" id="dnum1">data:dnumber-->
+            <input type="text" :value="dnumber" @input="number1Input" id="dnum1">data:dnumber{{dnumber}}
+        </label>
+
+
+        <h2>{{cnum2}}</h2>
+
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const cpn={
+        template:'#cpn',
+        props:{
+            cnum1:Number,
+            cnum2:Number
+        },
+        data(){
+            return {
+                dnumber:this.cnum1
+            }
+        },
+        methods:{
+            number1Input(event){
+                this.dnumber=event.target.value;
+                this.$emit('number1change',this.dnumber)
+            }
+        }
+    }
+    const app=new Vue({
+        el:"#app",
+        data:{
+            message:"你好呀",
+            num1:1,
+            num2:0
+        },
+        components:{
+            cpn
+        },
+        methods:{
+            number1change(dnumber){
+                this.num1=parseInt(dnumber);
+            }
+        }
+    })
+</script>
+</body>
+</html>

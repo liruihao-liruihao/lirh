@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--因为事件冒泡，所以点击按钮，会触发按钮事件和div事件-->
+<!--要求，点击按钮，只触发按钮事件，不触发div事件，解决，vue修饰符-->
+<!--修饰符一.stop修饰符的使用：阻止事件冒泡-->
+<div id="app">
+    <div @click="divClick">
+        aaa
+        <button @click.stop="btnClick">按钮</button>
+    </div>
+    <br>
+    <!--修饰符二.prevent阻止默认事件-->
+    <form action="baidu">
+        <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+
+
+    <!--修饰符三 监听某个键盘的点击-->
+    <input type="text" @keyup.enter="keyup">
+
+    <!--修饰符四.once-->
+    <button @click.once="btn2Click">按钮2</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:"#app",
+        data:{
+            message:"你好呀"
+        },
+        methods:{
+            divClick(){
+                console.log("divClock..");
+            },
+            btnClick(){
+                console.log("btn click。。。");
+            },
+            submitClick(){
+                console.log("submitClick。。")
+            },
+            keyup(){
+                console.log("keyup。")
+            },
+            btn2Click(){
+                console.log("btn2Click")
+            }
+        }
+    })
+</script>
+</body>
+</html>

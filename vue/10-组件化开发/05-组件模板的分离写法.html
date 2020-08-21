@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <cpn1></cpn1>
+    <cpn1></cpn1> <cpn1></cpn1>
+</div>
+
+<!--分离方法一:通过script，注意类型必须是text/x-template-->
+<!--<script type="text/x-template" id="cpn">-->
+    <!--<div>-->
+        <!--<p>hello2</p>-->
+    <!--</div>-->
+<!--</script>-->
+<!--分离方法二：使用template标签-->
+<template id="cpn">
+    <div>
+        <p>hello3</p>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component('cpn1',{
+        template:'#cpn'
+    })
+    const app=new Vue({
+        el:"#app",
+        data:{
+            message:"你好呀"
+        }
+    })
+</script>
+</body>
+</html>

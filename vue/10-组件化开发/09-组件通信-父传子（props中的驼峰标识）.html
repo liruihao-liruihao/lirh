@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    {{message}}
+    <!--注意：v-bind：不支持驼峰，如果非要使用可以参考eg:I可以写成-i    -->
+    <cpn :cinfo="info"></cpn>
+</div>
+<template id="cpn">
+    <div>
+        <h2>{{cinfo}}</h2>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    const cpn={
+        template:'#cpn',
+        props: {
+
+            cinfo: {
+                type: Object,
+                default() {
+                    return {}
+                }
+            }
+        }
+
+    }
+    const app=new Vue({
+        el:"#app",
+        data:{
+            message:"你好呀",
+            info:{
+                name:"why",
+                age:18,
+                height:1.88
+            }
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

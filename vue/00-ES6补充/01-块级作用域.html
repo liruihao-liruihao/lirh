@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button>4</button>
+<button>5</button>
+
+<script>
+    //es5中的var是没有块级作用域的
+    //es6中的let和const是有块作用域的
+    const btns=document.getElementsByTagName('button');
+    //问题 i没块作用域，点击第一个按钮，会打印第5个按钮被点击
+    // for (var i = 0; i < btns.length; i++) {
+    //     btns[i].addEventListener('click',function () {
+    //         console.log("第"+i+"个按钮被点击");
+    //     })
+    // }
+    //解决一,es5,使用函数，因为函数有块级作用域
+    // for (var i = 0; i < btns.length; i++) {
+    //     (function(i){
+    //         btns[i].addEventListener('click',function () {
+    //         console.log("第"+i+"个按钮被点击");
+    //     })})(i)
+    //
+    // }
+    //解决二：es6，使用let
+    // for (let i = 0; i < btns.length; i++) {
+    //     btns[i].addEventListener('click',function () {
+    //         console.log("第"+i+"个按钮被点击");
+    //     })
+    // }
+</script>
+</body>
+</html>

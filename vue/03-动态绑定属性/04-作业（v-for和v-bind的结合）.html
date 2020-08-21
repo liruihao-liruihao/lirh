@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in movies">{{index}}{{item}}</li>
+    </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:"#app",
+        data:{
+            movies:['电影一','电影二','电影三','电影四','电影五','电影六','电影七']
+        }
+    })
+</script>
+</body>
+</html>

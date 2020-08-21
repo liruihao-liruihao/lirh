@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <!--选择一个-->
+    <select name="abc" id="" v-model="fruit">
+        <option value="苹果" >苹果</option>
+        <option value="苹果1">苹果1</option>
+        <option value="苹果2" >苹果2</option>
+        <option value="苹果3">苹果3</option>
+
+    </select>
+    {{fruit}}
+
+    <br>
+    <!--选择多个-->
+    <select name="abc"  v-model="fruits" multiple>
+        <option value="苹果" >苹果</option>
+        <option value="苹果1">苹果1</option>
+        <option value="苹果2" >苹果2</option>
+        <option value="苹果3">苹果3</option>
+
+    </select>
+    {{fruits}}
+    <br>
+    <br>
+<!--值绑定，后端返回一个数组3-->
+    <label v-for="item in originHobbies">
+        <input type="checkbox" :value="item" v-model="hobbies">{{item}}
+    </label>
+    <br>
+{{hobbies}}
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:"#app",
+        data:{
+            message:"你好呀",
+            fruit:'苹果3',
+            fruits:[],
+            hobbies:[],
+            originHobbies:['111','222','333','444','555']
+        }
+    })
+</script>
+</body>
+</html>
